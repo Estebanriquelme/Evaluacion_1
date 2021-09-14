@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 //importando alert
 import { alertController } from '@ionic/core';
 import { ToastController } from '@ionic/angular';
+//enlaces
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,8 @@ import { ToastController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  constructor( private toastController: ToastController) { }
+  constructor( private toastController: ToastController,
+               private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,5 +26,7 @@ export class LoginPage implements OnInit {
     await alerta.present();
     
   }
-
+  iniciar(){
+    this.router.navigateByUrl("/bienvenida")
+  }
 }
