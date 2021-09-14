@@ -15,16 +15,16 @@
       <ion-item>
         <ion-icon name="person-outline"></ion-icon>
         <ion-label position="floating">nombre de usuario</ion-label>
-        <ion-input ></ion-input>
+        <ion-input #user ></ion-input>
       </ion-item><br>
       <ion-item>
         <ion-icon name="lock-closed-outline"></ion-icon>
         <ion-label position="floating">contraseña</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" #pass></ion-input>
       </ion-item>
     </div>
     <div class="boton ion-padding">
-      <ion-button size="large" class="boton_login" (click)="iniciar()" expand="block" >
+      <ion-button size="large" class="boton_login" (click)="iniciar(user, pass)" expand="block" >
         iniciar 
       </ion-button>
     </div>
@@ -34,5 +34,5 @@
       
     </div>
   </div>
-  
+  <p>{{nombre}}</p>
 </ion-content>

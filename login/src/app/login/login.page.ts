@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  user: string;
+  pass: string;
   constructor( private toastController: ToastController,
                private router: Router) { }
 
@@ -26,7 +27,30 @@ export class LoginPage implements OnInit {
     await alerta.present();
     
   }
-  iniciar(){
-    this.router.navigateByUrl("/bienvenida")
+  async iniciar(user: HTMLInputElement,
+    pass:HTMLInputElement){
+    let nombre = "juan";
+    let password = "cuenta123"
+    let usuario = user.value;
+    let contraseña =pass.value;
+    if(usuario == nombre && contraseña==password){
+      this.router.navigateByUrl("/bienvenida")
+    }else if(usuario == "" && contraseña==""){
+      const error1 = await this.toastController.create({
+        message: 'debe llenar ambos campos',
+        duration: 3000,
+        color: 'warning'
+      });
+      await error1.present();
+    }
+    
+    else{
+      const error2 = await this.toastController.create({
+        message: 'contraseña y usuario incorrecto intente denuevo si la olvido precione recuperar contraseña',
+        duration: 3000,
+        color: 'danger'
+      });
+      await error2.present();
+    }
   }
 }
