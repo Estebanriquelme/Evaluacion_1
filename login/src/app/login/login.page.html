@@ -1,0 +1,33 @@
+<ion-header>
+    <div class="login_header">
+      <img class="imagen_header" src="https://www.diarioconstitucional.cl/wp-content/uploads/2021/04/duoc-uc.jpg" alt="logo">
+
+    </div>
+</ion-header>
+<ion-content>
+  <div class="login_body ion-padding">
+    <div class="bienvenida ion-padding">
+      <h3>inicia sesion</h3>
+    </div>
+    <div class="inputs ion-padding">
+      <ion-item>
+        <ion-label position="floating">nombre de usuario</ion-label>
+        <ion-input ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">contraseña</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+    </div>
+    <div class="ion-padding">
+      <p (click)="onClick(alert('poto'))">recuperar contraseña</p>
+      
+    </div>
+    <div class="boton ion-padding">
+      <ion-button size="large" class="boton_login" (click)="onClick()" expand="block" >
+        iniciar 
+      </ion-button>
+    </div>
+  </div>
+
+</ion-content>
