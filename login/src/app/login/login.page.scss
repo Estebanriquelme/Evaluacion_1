@@ -1,11 +1,19 @@
 .imagen_header{
     border-bottom-color: black ;
+    
 }
 .bienvenida{
     padding-top: 0;
     padding-bottom: 0;
+    margin-bottom: 0;
+    margin-top: 0;
 }
-
+ion-text{
+    padding-bottom: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
 .inputs{
     position: center;
     
@@ -24,3 +32,18 @@ ion-icon{
     right: 5px;
 }
 
+.login_body{
+    
+    width: 100%;
+    
+}
+p{
+    padding-top: 1;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.boton{
+    padding-bottom: 0;
+    margin-bottom: 0;
+}

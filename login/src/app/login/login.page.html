@@ -7,7 +7,9 @@
 <ion-content>
   <div class="login_body ion-padding">
     <div class="bienvenida ion-padding">
-      <h3>inicia sesion</h3>
+      <ion-text color="primary">
+        <h1>inicie sesión</h1>
+      </ion-text>
     </div>
     <div class="inputs ion-padding">
       <ion-item>
@@ -21,14 +23,15 @@
         <ion-input type="password"></ion-input>
       </ion-item>
     </div>
-    <div class="ion-padding">
-      <p class="ion-text-center" (click)="recuperar()">recuperar contraseña</p>
-      
-    </div>
     <div class="boton ion-padding">
       <ion-button size="large" class="boton_login" (click)="iniciar()" expand="block" >
         iniciar 
       </ion-button>
+    </div>
+    <div class="ion-padding">
+      <p class="ion-text-center" > ¿olvidaste tu contraseña? </p>
+      <a (click)="recuperar()"><p class="ion-text-center">recuperar contraseña</p> </a>
+      
     </div>
   </div>
   
