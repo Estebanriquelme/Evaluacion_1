@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
     if(this.loginservice.getusuario(usuario)&& this.loginservice.getcontraseña(contraseña) ){
       
       this.router.navigateByUrl("/bienvenida")
-    }else if(usuario == "" && contraseña==""){
+    }else if(usuario == "" || contraseña==""){
       const error1 = await this.toastController.create({
         message: 'debe llenar ambos campos',
         duration: 3000,
