@@ -6,9 +6,9 @@
 </ion-header>
 
 <ion-content>
-  <div class=" ion-padding">
+  <div class=" ion-padding" *ngFor="let usuario of usuarios">
     <ion-text color="black">
-      <h1>Bienvenido/a,   </h1>
+      <h1>Bienvenido/a, {{usuario.usuario}}</h1>
     </ion-text>
   </div>
 </ion-content>
