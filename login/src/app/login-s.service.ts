@@ -14,4 +14,6 @@ export class LoginSService {
 
   getUsuarios(){return this.usuario}
   getusuario(nombre:string){return this.usuario.find(x =>{return x.usuario == nombre})}
+  getcontraseña(contraseña:string){return this.usuario.find(x =>{return x.contraseña == contraseña})}
+
 }

@@ -4,6 +4,7 @@ import { alertController } from '@ionic/core';
 import { ToastController } from '@ionic/angular';
 //enlaces
 import { Router } from '@angular/router';
+import { LoginSService } from '../login-s.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginPage implements OnInit {
   user: string;
   pass: string;
   constructor( private toastController: ToastController,
-               private router: Router) { }
+               private router: Router,
+               private loginservice:LoginSService) { }
 
   ngOnInit() {
   }
@@ -29,12 +31,10 @@ export class LoginPage implements OnInit {
   }
   async iniciar(user: HTMLInputElement,
     pass:HTMLInputElement){
-    let nombre = "juan";
-    let password = "cuenta123"
     let usuario = user.value;
     let contraseña =pass.value;
-    if(usuario == nombre && contraseña==password){
-      this.user= nombre;
+    if(this.loginservice.getusuario(usuario)&& this.loginservice.getcontraseña(contraseña) ){
+      
       this.router.navigateByUrl("/bienvenida")
     }else if(usuario == "" && contraseña==""){
       const error1 = await this.toastController.create({
