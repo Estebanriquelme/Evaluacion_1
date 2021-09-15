@@ -22,10 +22,15 @@ export class BienvenidaPage implements OnInit {
       {
         text: "si",
         handler: () =>{
-
+          this.router.navigateByUrl("/login")
         }
+      },
+      {
+        text: "no",
+        role: "cancel"
       }
       ]
     })
+    await alerta.present();
   }
 }
