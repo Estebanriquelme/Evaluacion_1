@@ -34,6 +34,7 @@ export class LoginPage implements OnInit {
     let usuario = user.value;
     let contraseña =pass.value;
     if(usuario == nombre && contraseña==password){
+      this.user= usuario;
       this.router.navigateByUrl("/bienvenida")
     }else if(usuario == "" && contraseña==""){
       const error1 = await this.toastController.create({
