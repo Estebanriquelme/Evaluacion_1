@@ -20,14 +20,23 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
-  async recuperar(){
-    const alerta = await this.toastController.create({
-      message: 'tu nueva contraseña a sido enviada a tu email',
-      duration: 3000,
-      color: 'warning'
-    });
-    await alerta.present();
-    
+  async recuperar(user: HTMLInputElement){
+    let usuario = user.value;
+    if(this.loginservice.getusuario(usuario)){
+      const alerta = await this.toastController.create({
+        message: 'tu nueva contraseña a sido enviada a tu email',
+        duration: 3000,
+        color: 'warning'
+      });
+      await alerta.present();
+    }else{
+      const alert = await this.toastController.create({
+        message: 'debes ingresar tu usuario antes de clickearme',
+        duration: 3000,
+        color: 'danger'
+      });
+      await alert.present();
+    }
   }
   async iniciar(user: HTMLInputElement,
     pass:HTMLInputElement){
