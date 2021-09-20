@@ -12,6 +12,7 @@ import { LoginSService } from '../login-s.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  
   user: string;
   pass: string;
   constructor( private toastController: ToastController,
@@ -29,13 +30,20 @@ export class LoginPage implements OnInit {
         color: 'warning'
       });
       await alerta.present();
-    }else{
+    }else if(usuario == ""){
       const alert = await this.toastController.create({
         message: 'debes ingresar tu usuario antes de clickearme',
         duration: 3000,
         color: 'danger'
       });
       await alert.present();
+    }else{
+      const a = await this.toastController.create({
+        message: 'usted no cuenta con una cuenta Duoc',
+        duration: 3000,
+        color: 'danger'
+      });
+      await a.present();
     }
   }
   async iniciar(user: HTMLInputElement,
