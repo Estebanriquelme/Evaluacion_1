@@ -1,37 +1,34 @@
-<ion-header>
-    <div class="login_header">
-      <img class="imagen_header" src="https://www.diarioconstitucional.cl/wp-content/uploads/2021/04/duoc-uc.jpg" alt="logo">
+<ion-content [scrollEvents]="true"
+(ionScrollStart)="logScrollStart()">
 
+  <div class="login ion-padding">
+    <div class="titulo ion-padding">
+      <h1> Bienvenido a Duoc Uc</h1>
+      <p>inicia sesion con tu cuenta</p>
     </div>
-</ion-header>
-<ion-content>
-  <div class="login_body ion-padding">
-    <div class="bienvenida ion-padding">
-      <ion-text color="primary">
-        <h1>inicie sesión</h1>
-      </ion-text>
+    <div class="formulario ion-padding">
+      <div class="inputs">
+        <ion-item>
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-label position="floating">nombre de usuario</ion-label>
+          <ion-input #user ></ion-input>
+        </ion-item><br>
+        <ion-item>
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <ion-label position="floating">contraseña</ion-label>
+          <ion-input type="password" #pass></ion-input>
+        </ion-item>
+      </div>
     </div>
-    <div class="inputs ion-padding">
-      <ion-item>
-        <ion-icon name="person-outline"></ion-icon>
-        <ion-label position="floating">nombre de usuario</ion-label>
-        <ion-input #user ></ion-input>
-      </ion-item><br>
-      <ion-item>
-        <ion-icon name="lock-closed-outline"></ion-icon>
-        <ion-label position="floating">contraseña</ion-label>
-        <ion-input type="password" #pass></ion-input>
-      </ion-item>
-    </div>
-    <div class="boton ion-padding">
-      <ion-button size="large" class="boton_login" (click)="iniciar(user, pass)" expand="block" >
+    <div class="botones ion-padding">
+      <ion-button size="large" class="boton_login" (click)="iniciar(user, pass)"  >
         iniciar 
       </ion-button>
-    </div>
-    <div class="ion-padding">
-      <p class="ion-text-center" > ¿olvidaste tu contraseña? </p>
+      <p>¿olidaste tu contraseña?</p>
       <a (click)="recuperar(user)"><p class="ion-text-center">recuperar contraseña</p> </a>
-      
+
     </div>
-  </div>
+    
+
+  </div>  
 </ion-content>
