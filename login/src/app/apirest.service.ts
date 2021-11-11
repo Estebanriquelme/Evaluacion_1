@@ -18,7 +18,7 @@ export class ApirestService {
 
         data.forEach(item => {this.listado.push(item);})
 
-        console.table(this.listado);
+        
 
       },
 

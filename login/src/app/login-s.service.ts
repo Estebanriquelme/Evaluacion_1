@@ -7,7 +7,7 @@ export class LoginSService {
   private usuario: Login[] = [
     {
       usuario: "juan",
-      contraseña: "cuenta123"
+      contraseña: "1234"
     }
   ]
   constructor() { }
