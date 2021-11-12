@@ -11,4 +11,13 @@
       <h1>Bienvenido/a, {{usuario.usuario}}</h1>
     </ion-text>
   </div>
+
+  <div id="texto" *ngFor= "let info of info">
+    <ion-item>
+      <ion-label>
+        <h1>{{info.title}}</h1>
+        <p>{{info.body}}</p>
+      </ion-label>
+    </ion-item>
+  </div>
 </ion-content>

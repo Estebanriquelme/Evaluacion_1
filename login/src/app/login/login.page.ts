@@ -7,6 +7,8 @@ import { Router, RouterLink } from '@angular/router';
 import { LoginSService } from '../login-s.service';
 ///importando apiRest
 import { ApirestService } from '../apirest.service';
+//importar storage
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'app-login',
@@ -19,11 +21,17 @@ export class LoginPage implements OnInit {
   pass: string;
   listado: any ;
   usuarios:any;
+  datos:any;
   constructor( private toastController: ToastController,
-               private router: Router,private routerLink: RouterLink,
-               private loginservice:LoginSService, private api:ApirestService) { }
+                private storage: StorageService,
+               private router: Router,
+               private loginservice:LoginSService,
+                private api:ApirestService,
+                ) { }
 
   ngOnInit() {
+    this.api.borrarPosts();
+    this.storage.init();
     
   }
   async recuperar(user: HTMLInputElement){
@@ -56,12 +64,17 @@ export class LoginPage implements OnInit {
   async iniciar(user: HTMLInputElement,
     pass:HTMLInputElement){
     this.api.getUsers();
-    this.listado = this.api.listado;
+    this.listado = this.api.listado;//agregamos el listado de la api a una variable listado
     let usuario = user.value;
     let contraseña =pass.value;
-    if(this.listado.find(item => item.username == usuario)&& this.loginservice.getcontraseña(contraseña) ){
-      this.usuarios=this.listado.find(item => item.username == usuario);
-      let id = this.usuarios.id
+    if(this.listado.find(item => item.username == usuario)&& this.loginservice.getcontraseña(contraseña) ){ //comparamos el usuario colacado por el cliente con los usurios de la api
+      this.usuarios=this.listado.find(item => item.username == usuario); //agregamos los datos del usuario encontrado a una variable
+      let id = this.usuarios.id //agregamos id del usurio de la api a una variable id
+      this.api.getDatosUser(id);//guardamos la id del usuario en la funcion getdatos para que quede guardado en el service
+      await this.storage.agregarUsuarios(this.listado);
+      console.log(this.storage);
+      this.datos = this.api.datos;
+      //this.router.navigateByUrl("/bienvenida")
       
     }else if(usuario == "" || contraseña==""){
       const error1 = await this.toastController.create({
