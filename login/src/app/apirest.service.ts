@@ -61,8 +61,6 @@ export class ApirestService {
 
     })
   }
-  borrarPosts(){
-    this.posts = [];
-  }
+  
 }  
 

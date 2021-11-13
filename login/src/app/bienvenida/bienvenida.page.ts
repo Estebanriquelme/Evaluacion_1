@@ -4,6 +4,8 @@ import { AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginSService } from '../login-s.service';
 import { ApirestService } from '../apirest.service';
+import { StorageService } from '../storage.service';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-bienvenida',
@@ -15,15 +17,20 @@ export class BienvenidaPage implements OnInit {
   posts : any;
   datos :any;
   info: any;
-  constructor( private alertController: AlertController, private router:Router, private loginservice:LoginSService,private api:ApirestService) { }
+  interfaz: any;
+  id: any;
+  constructor( private alertController: AlertController, private router:Router, private loginservice:LoginSService,
+    private api:ApirestService,private storage: StorageService,) { }
 
-  ngOnInit() {
-    this.usuarios = this.loginservice.getUsuarios();
-    this.datos = this.api.datos;
-    let id = this.datos.id;
-    this.api.getPost();
-    this.posts = this.api.posts;
-    this.info =this.posts.filter(item => item.userId ==id);
+  async ngOnInit() {
+    this.datos = this.api.datos;//introducir los datos del usurio registrado
+    this.id = String(this.datos.id);
+    this.posts = this.api.posts;//obtener todos los post realizados
+    this.info =this.posts.filter(item => item.userId ==this.id);//obtener solo los posts del usurio logueado
+    await this.storage.agregarPosts(this.id,this.info);//agragar los datos al local storage
+    this.interfaz = await this.storage.recuperar(this.id);//recuperar los datos del storage para mostrarlos
+    
+    
     
     
     
@@ -38,7 +45,7 @@ export class BienvenidaPage implements OnInit {
       {
         text: "si",
         handler: () =>{
-          
+          this.storage.eliminar(this.id)//al cerrar sesion se bora el storage
           this.router.navigateByUrl("/login")
         }
       },

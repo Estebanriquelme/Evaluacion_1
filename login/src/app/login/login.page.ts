@@ -30,8 +30,10 @@ export class LoginPage implements OnInit {
                 ) { }
 
   ngOnInit() {
-    this.api.borrarPosts();
+    //al iniciar la pagina se crea el storage y se obtienen los usuarios y los post de la api
     this.storage.init();
+    this.api.getUsers();
+    this.api.getPost();
     
   }
   async recuperar(user: HTMLInputElement){
@@ -63,7 +65,6 @@ export class LoginPage implements OnInit {
   }
   async iniciar(user: HTMLInputElement,
     pass:HTMLInputElement){
-    this.api.getUsers();
     this.listado = this.api.listado;//agregamos el listado de la api a una variable listado
     let usuario = user.value;
     let contraseña =pass.value;
@@ -71,10 +72,10 @@ export class LoginPage implements OnInit {
       this.usuarios=this.listado.find(item => item.username == usuario); //agregamos los datos del usuario encontrado a una variable
       let id = this.usuarios.id //agregamos id del usurio de la api a una variable id
       this.api.getDatosUser(id);//guardamos la id del usuario en la funcion getdatos para que quede guardado en el service
-      await this.storage.agregarUsuarios(this.listado);
-      console.log(this.storage);
       this.datos = this.api.datos;
-      //this.router.navigateByUrl("/bienvenida")
+      this.router.navigateByUrl("/bienvenida");
+      pass.value= "";
+      user.value = "";
       
     }else if(usuario == "" || contraseña==""){
       const error1 = await this.toastController.create({
