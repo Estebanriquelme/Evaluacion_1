@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoginSService } from '../login-s.service';
 import { ApirestService } from '../apirest.service';
 import { StorageService } from '../storage.service';
-import { stringify } from 'querystring';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-bienvenida',
