@@ -33,6 +33,8 @@ export class LoginPage implements OnInit {
     //al iniciar la pagina se crea el storage y se obtienen los usuarios y los post de la api
     this.storage.init();
     this.api.getUsers();
+    this.api.getPost();
+    this.api.getComentarios();
     
     
   }

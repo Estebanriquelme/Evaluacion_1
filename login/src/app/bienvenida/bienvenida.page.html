@@ -12,12 +12,12 @@
     </ion-text>
   </div>
 
-  <div id="texto" *ngFor= "let info of interfaz" [routerLink]="['../comentarios/',info.id]">
+   <div id="texto" *ngFor= "let info of interfaz" [routerLink]="['../comentarios/',info.id]">
     <ion-item>
       <ion-label>
         <h1>{{info.title}}</h1>
         <p>{{info.body}}</p>
       </ion-label>
     </ion-item>
-  </div>
+  </div> 
 </ion-content>

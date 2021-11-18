@@ -11,11 +11,13 @@ export class ComentariosPage implements OnInit {
   datos: any
   posts: any
   info : any
+  comentarios: any
   constructor(private storage: StorageService, private router: ActivatedRoute,private api:ApirestService,) { }
 
   ngOnInit() {
     this.leerComentatios();
-    this.api.getPost();
+    
+    
     
   }
   async leerComentatios(){
@@ -23,8 +25,9 @@ export class ComentariosPage implements OnInit {
     this.router.paramMap.subscribe(async parametros => {
       id = parametros.get("id");
     });
-    this.posts = this.api.posts;//obtener todos los post realizados
-    this.info =this.posts.filter(item => item.id ==id)
+    this.comentarios = this.api.comentarios;//obtener todos los post realizados
+    this.info =this.comentarios.filter(item => item.postId ==id)
+    
     
     
     

@@ -8,6 +8,7 @@ export class ApirestService {
   listado = [];
   datos = [];
   posts = [];
+  comentarios= [];
   constructor(private http: HttpClient) { }
   //obtenemos todos los usuarios
   getUsers()
@@ -48,6 +49,27 @@ export class ApirestService {
       this.http.get(url2).subscribe((data:[]) => {
 
         data.forEach(item => {this.posts.push(item);})
+
+        
+
+      },
+
+      err => {
+
+        console.log("Ocurrio un error");
+
+      })
+
+    })
+  }
+  getComentarios(){
+    let url3 = this.apiURL + 'comments';
+
+    return new Promise((resolve, reject) => {
+
+      this.http.get(url3).subscribe((data:[]) => {
+
+        data.forEach(item => {this.comentarios.push(item);})
 
         
 
