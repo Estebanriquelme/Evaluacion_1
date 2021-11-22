@@ -44,21 +44,21 @@ export class LoginPage implements OnInit {
     this.listado = this.api.listado;
     if(this.listado.find(item => item.username == usuario)){
       const alerta = await this.toastController.create({
-        message: 'tu nueva contraseña a sido enviada a tu email',
+        message: 'Tu nueva contraseña ha sido enviada a tu email!',
         duration: 3000,
         color: 'warning'
       });
       await alerta.present();
     }else if(usuario == ""){
       const alert = await this.toastController.create({
-        message: 'debes ingresar tu usuario antes de clickearme',
+        message: 'Debes ingresar tu usuario antes de clickearme!',
         duration: 3000,
         color: 'danger'
       });
       await alert.present();
     }else{
       const a = await this.toastController.create({
-        message: 'usted no cuenta con una cuenta Duoc',
+        message: 'Usted no cuenta con una cuenta Duoc!',
         duration: 3000,
         color: 'danger'
       });
@@ -81,7 +81,7 @@ export class LoginPage implements OnInit {
       
     }else if(usuario == "" || contraseña==""){
       const error1 = await this.toastController.create({
-      message: 'debe llenar ambos campos',
+      message: 'Debe llenar ambos campos!',
       duration: 3000,
       color: 'warning'
       });
@@ -90,7 +90,7 @@ export class LoginPage implements OnInit {
     
     else{
       const error2 = await this.toastController.create({
-      message: 'contraseña y usuario incorrecto intente denuevo si la olvido precione recuperar contraseña',
+      message: 'Usuario y/o contraseña incorrecto(s). Intente nuevamente. Si olvidó su contraseña, presiona "Recuperar contraseña".',
       duration: 3000,
       color: 'danger'
     });
