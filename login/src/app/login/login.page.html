@@ -3,19 +3,19 @@
 
   <div class="login ion-padding">
     <div class="titulo ion-padding">
-      <h1> Bienvenido a Duoc Uc</h1>
-      <p>inicia sesion con tu cuenta</p>
+      <h1> Bienvenido a Duoc Uc!</h1>
+      <p>Inicia sesión con tu cuenta</p>
     </div>
     <div class="formulario ion-padding">
       <div class="inputs">
         <ion-item>
           <ion-icon name="person-outline"></ion-icon>
-          <ion-label position="floating">nombre de usuario</ion-label>
+          <ion-label position="floating">Nombre de usuario</ion-label>
           <ion-input #user ></ion-input>
         </ion-item><br>
         <ion-item>
           <ion-icon name="lock-closed-outline"></ion-icon>
-          <ion-label position="floating">contraseña</ion-label>
+          <ion-label position="floating">Contraseña</ion-label>
           <ion-input type="password" #pass></ion-input>
         </ion-item>
       </div>
@@ -24,8 +24,8 @@
       <ion-button size="large" class="boton_login" (click)="iniciar(user, pass)"  >
         iniciar 
       </ion-button>
-      <p>¿olidaste tu contraseña?</p>
-      <a (click)="recuperar(user)"><p class="ion-text-center">recuperar contraseña</p> </a>
+      <p>¿Olvidaste tu contraseña?</p>
+      <a (click)="recuperar(user)"><p class="ion-text-center">Recuperar contraseña</p> </a>
 
     </div>
     
