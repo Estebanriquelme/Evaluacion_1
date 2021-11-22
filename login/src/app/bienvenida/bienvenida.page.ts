@@ -40,18 +40,18 @@ export class BienvenidaPage implements OnInit {
   }
   async cerrar_sesion(){
     const alerta = await this.alertController.create({
-      header: "hola!",
-      message:"¿quieres cerrar sesión?",
+      header: "Hola!",
+      message:"¿Quieres cerrar sesión?",
       buttons:[
       {
-        text: "si",
+        text: "SÍ",
         handler: () =>{
           this.storage.eliminar(this.id)//al cerrar sesion se bora el storage
           this.router.navigateByUrl("/login")
         }
       },
       {
-        text: "no",
+        text: "NO",
         role: "cancel"
       }
       ]
